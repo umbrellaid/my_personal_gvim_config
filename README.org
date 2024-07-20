@@ -13,8 +13,8 @@ Everforest https://github.com/sainnhe/everforest
 
 Edge https://github.com/sainnhe/edge
 
-On my apple computer I use MacVim which has a built in color scheme that I use
-instead of changing it. https://macvim.org/ Color scheme is located here:
+MacVim has a built in color scheme available or you can set it to any vim color
+scheme. https://macvim.org/ Color scheme is located here:
 /Applications/MacVim.app/Contents/Resources/vim/runtime/colors
 https://macvim.org/docs/gui_mac.txt.html#macvim-colors macvim-colorscheme MacVim
 ships with a custom color scheme that is used instead of the default Vim color

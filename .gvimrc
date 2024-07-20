@@ -1,2 +1,2 @@
-set guifont=FiraCode\ Nerd\ Font\ 12
+set guifont=CaskaydiaCove\ Nerd\ Font\ 12
 set guicursor=a:blinkon0
