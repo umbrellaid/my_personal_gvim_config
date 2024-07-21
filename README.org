@@ -1,18 +1,91 @@
-* My Personal gVim Config
+* My Personal gVim Config :TOC_9:
+  - [[#introduction][Introduction]]
+  - [[#links-to-resources][Links to Resources]]
+  - [[#color-schemes][Color Schemes]]
+  - [[#macvim][MacVim]]
+    - [[#reference-manual-link][Reference Manual Link]]
+    - [[#color-scheme][Color Scheme]]
 
 ** Introduction
-
 Writing down some notes as a start to develop a purposely minimal gVim
 configuration.
-
 ** Links to Resources
+https://github.com/nvim-zh/minimal_vim - obtained good general settings from this configuration
+vim plug https://github.com/junegunn/vim-plug
+#+begin_example
+unix install vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+windows install vim
+iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
+    ni $HOME/vimfiles/autoload/plug.vim -Force
+================================================================================
+Unix, Linux Neovim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+Linux (Flatpak) Neovim
+curl -fLo ~/.var/app/io.neovim.nvim/data/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+Windows (PowerShell) Neovim
+iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
+    ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
+:PlugInstall to install the plugins
+:PlugUpdate to install or update the plugins
+:PlugDiff to review the changes from the last update
+:PlugClean to remove plugins no longer in the list
+Note
+That's basically all you need to know to get started. The rest of the document is for advanced users who want to know more about the features and options.
+Tip
+plug#end() automatically executes filetype plugin indent on and syntax enable. We believe this is a good default for most users, but if you don't want this behavior, you can revert the settings after the call.
+call plug#end()
+filetype indent off   " Disable file-type-specific indentation
+syntax off            " Disable syntax highlighting
+#+end_example
+vimrc.vim This plugin replaces lion's share of your .vimrc. A superset of vim-sensible. https://github.com/sheerun/vimrc
+vim-polyglot A collection of language packs for Vim. https://github.com/sheerun/vim-polyglot
+tcomment_vim tcomment provides easy to use, file-type sensible comments for Vim. It
+can handle embedded syntax. https://github.com/tomtom/tcomment_vim
+lightline.vim A light and configurable statusline/tabline plugin for Vim https://github.com/itchyny/lightline.vim
+repeat.vim Repeat.vim remaps . in a way that plugins can tap into it. https://github.com/tpope/vim-repeat
+vim-highlightedyank Make the yanked region apparent! https://github.com/machakann/vim-highlightedyank
+vim-sandwich sandwich.vim is a plugin that makes it super easy to work with stuff that comes in pairs, like brackets, quotes, and even HTML or XML tags. You can quickly get rid of them, swap them out, or slap new ones around your text. https://github.com/machakann/vim-sandwich
+#+begin_example
+https://github.com/machakann/vim-sandwich/wiki/Introduce-vim-surround-keymappings
+Introduce vim-surround keymappings
+If you want to use vim-sandwich with vim-surround keymappings, add the following line to your vimrc.
 
-Sainnhe Park makes top tier color schemes for vim. https://github.com/sainnhe
+runtime macros/sandwich/keymap/surround.vim
+ys, yss, yS, ds, cs in normal mode and S in visual mode are available. dss and css (not found in vim-surround) are also available: These are similar to ds and cs but determine deleted/replaced texts automatically. See the file directly for details.
+
+NOTE that the vim-sandwich plugin should be in 'runtimepath' option when the :runtime command is executed. If you are using a plugin manager, like plug, the :execute command should be placed after plug#end() in your vimrc.
+
+plug#begin()
+~~~
+Plug 'machakann/vim-sandwich'
+~~~
+plug#end()
+runtime macros/sandwich/keymap/surround.vim
+Or just use the :source command instead.
+
+source {full/path/to}/macros/sandwich/keymap/surround.vim
+Please change the {full/path/to} part for your environment.
+#+end_example
+easymotion/vim-easymotion Vim motions on speed! https://github.com/easymotion/vim-easymotion
+unimpaired.vim Pairs of handy bracket mappings https://github.com/tpope/vim-unimpaired
+vim-abolish Work with several variants of a word at once https://github.com/tpope/vim-abolish
+vim-sleuth Heuristically set buffer options https://github.com/tpope/vim-sleuth
+vim-vinegar Combine with netrw to create a delicious salad dressing https://github.com/tpope/vim-vinegar
+** Color Schemes
+Author: Sainnhe Park makes top tier color schemes for vim. https://github.com/sainnhe
 
 Everforest https://github.com/sainnhe/everforest
 
 Edge https://github.com/sainnhe/edge
 
+** MacVim
+*** Reference Manual Link
+MacVim Reference Manual https://macvim.org/docs/gui_mac.txt.html#
+*** Color Scheme
 MacVim has a built in color scheme available or you can set it to any vim color
 scheme. https://macvim.org/ Color scheme is located here:
 /Applications/MacVim.app/Contents/Resources/vim/runtime/colors
@@ -31,5 +104,3 @@ loaded when the system gvimrc file is sourced and mess up your changes.
 The color scheme uses the system "Highlight Color", which can be changed in the
 "Appearance" pane of the System Settings. It also changes the highlight color
 when a window becomes inactive.
-
-MacVim Reference Manual https://macvim.org/docs/gui_mac.txt.html#
