@@ -1,4 +1,4 @@
-* My Personal gVim Config :TOC_9:
+* My Personal gVim Config                                              :TOC_9:
   - [[#introduction][Introduction]]
   - [[#links-to-resources][Links to Resources]]
   - [[#color-schemes][Color Schemes]]
